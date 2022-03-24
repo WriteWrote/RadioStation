@@ -1,6 +1,6 @@
-package repository;
+package vsu.radstat.repository;
 
-import model.entity.RequestEntity;
+import vsu.radstat.model.entity.RequestEntity;
 
 import java.time.LocalDate;
 import java.util.HashMap;

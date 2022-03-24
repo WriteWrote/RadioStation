@@ -1,6 +1,6 @@
-package repository;
+package vsu.radstat.repository;
 
-import model.entity.RecordEntity;
+import vsu.radstat.model.entity.RecordEntity;
 
 import java.util.HashMap;
 import java.util.List;

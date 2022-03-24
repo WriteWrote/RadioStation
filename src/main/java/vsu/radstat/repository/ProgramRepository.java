@@ -1,6 +1,6 @@
-package repository;
+package vsu.radstat.repository;
 
-import model.entity.ProgramEntity;
+import vsu.radstat.model.entity.ProgramEntity;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -21,6 +21,6 @@ public class ProgramRepository {
         return storage.values().stream().filter(x -> x.getLength() >= len1 && x.getLength()<=len2).collect(Collectors.toList());
     }
     public List<ProgramEntity> findAllByDate(LocalDate date){
-        return storage.values().stream().filter(x -> date.equals(x.getDate())).collect(Collectors.toList());
+        return storage.values().stream().filter(x -> date.equals(x.getDate().toLocalDate())).collect(Collectors.toList());
     }
 }

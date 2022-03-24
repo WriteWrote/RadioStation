@@ -1,4 +1,4 @@
-package model.entity;
+package vsu.radstat.model.entity;
 
 import lombok.Data;
 
