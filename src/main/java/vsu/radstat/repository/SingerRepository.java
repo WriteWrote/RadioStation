@@ -9,10 +9,21 @@ import java.util.Map;
 
 public class SingerRepository {
     private final Map<Integer, SingerEntity> storage = new HashMap<>();
-    public SingerEntity findById(Integer id){
+
+    public SingerEntity findById(Integer id) {
         return storage.get(id);
     }
-    public List<SingerEntity> getAll(){
+
+    public List<SingerEntity> getAll() {
         return new ArrayList<>(storage.values());
     }
+
+    public void insert(SingerEntity entity) throws Exception {
+        if (storage.containsKey(entity.getSingerId())) {
+            throw new Exception("Already has this album");
+
+        }
+        storage.put(entity.getSingerId(), entity);
+    }
+
 }
