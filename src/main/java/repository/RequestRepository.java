@@ -15,12 +15,12 @@ public class RequestRepository {
         return storage.get(id);
     }
 
-    public List<RequestEntity> findAllByAuthorId(Integer id) {
-        return storage.values().stream().filter(x -> id.equals(x.getAuthor())).collect(Collectors.toList());
+    public List<RequestEntity> findAllByAuthor(String author) {
+        return storage.values().stream().filter(x -> author.equals(x.getAuthor())).collect(Collectors.toList());
     }
 
-    public List<RequestEntity> findAllByAlbumId(Integer id) {
-        return storage.values().stream().filter(x -> id.equals(x.getAlbum())).collect(Collectors.toList());
+    public List<RequestEntity> findAllByAlbum(String album) {
+        return storage.values().stream().filter(x -> album.equals(x.getAlbum())).collect(Collectors.toList());
     }
 
     public RequestEntity findByCompositionName(String name) {
@@ -37,6 +37,7 @@ public class RequestRepository {
     public void insert(RequestEntity entity) throws Exception {
         if (storage.containsKey(entity.getRequestId())) {
             throw new Exception("Already has this request");
+
         }
         storage.put(entity.getRequestId(), entity);
     }
