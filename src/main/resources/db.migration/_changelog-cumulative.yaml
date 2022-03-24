@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - preConditions:
+      - dbms:
+          type: postgresql
+  - changeSet:
+      id: RS-001-202203241017
+      author: EllinaObukhova
+      comment: Create Initial DB Structure
+      changes:
+        - sqlFile:
+            path:
+            relativeToChangelogFile: true
