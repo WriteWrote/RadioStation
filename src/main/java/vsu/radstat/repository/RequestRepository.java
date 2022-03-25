@@ -23,6 +23,10 @@ public class RequestRepository {
         return storage.values().stream().filter(x -> album.equals(x.getAlbum())).collect(Collectors.toList());
     }
 
+    public List<RequestEntity> findAllBySinger(String singer) {
+        return storage.values().stream().filter(x -> singer.equals(x.getSinger())).collect(Collectors.toList());
+    }
+
     public RequestEntity findByCompositionName(String name) {
         return storage.values().stream()
                 .filter(x -> name.equals(x.getComposition()))

@@ -12,6 +12,7 @@ public class RequestEntity {
     private String composition;
     private String author;
     private String album;
+    private String singer;
     private LocalDate date;
     private boolean completed;
 }
