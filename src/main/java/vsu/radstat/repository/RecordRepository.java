@@ -14,6 +14,13 @@ public class RecordRepository {
         return storage.get(id);
     }
 
+    public RecordEntity findByName(String name){
+        return storage.values().stream()
+                .filter(x -> name.equals(x.getComposition()))
+                .findFirst()
+                .orElse(null);
+    }
+
     public List<RecordEntity> findAllByAuthorId(Integer id) {
         return storage.values().stream().filter(x -> id.equals(x.getAuthorId())).collect(Collectors.toList());
     }

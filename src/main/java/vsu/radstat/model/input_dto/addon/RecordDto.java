@@ -25,7 +25,7 @@ public class RecordDto {
     @NotNull
     private Double time;
 
-    @PositiveOrZero
-    @NotNull
-    private Double rating;
+//    @PositiveOrZero
+//    @NotNull
+//    private Double rating;
 }

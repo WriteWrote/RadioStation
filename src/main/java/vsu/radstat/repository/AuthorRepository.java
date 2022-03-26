@@ -14,6 +14,13 @@ public class AuthorRepository {
         return storage.get(id);
     }
 
+    public AuthorEntity findByName(String name){
+        return storage.values().stream()
+                .filter(x -> name.equals(x.getAuthorName()))
+                .findFirst()
+                .orElse(null);
+    }
+
     public List<AuthorEntity> getAll() {
         return new ArrayList<>(storage.values());
     }

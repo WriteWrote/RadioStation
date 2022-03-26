@@ -14,6 +14,13 @@ public class GenreRepository {
         return storage.get(id);
     }
 
+    public GenreEntity findByName(String name){
+        return storage.values().stream()
+                .filter(x -> name.equals(x.getGenreName()))
+                .findFirst()
+                .orElse(null);
+    }
+
     public List<GenreEntity> getAll() {
         return new ArrayList<>(storage.values());
     }

@@ -1,6 +1,7 @@
 package vsu.radstat.repository;
 
 import vsu.radstat.model.entity.AlbumEntity;
+import vsu.radstat.model.entity.AuthorEntity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +13,13 @@ public class AlbumRepository {
 
     public AlbumEntity findById(Integer id) {
         return storage.get(id);
+    }
+
+    public AlbumEntity findByName(String name){
+        return storage.values().stream()
+                .filter(x -> name.equals(x.getAlbumName()))
+                .findFirst()
+                .orElse(null);
     }
 
     public List<AlbumEntity> getAll() {

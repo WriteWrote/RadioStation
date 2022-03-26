@@ -14,6 +14,13 @@ public class SingerRepository {
         return storage.get(id);
     }
 
+    public SingerEntity findByName(String name){
+        return storage.values().stream()
+                .filter(x -> name.equals(x.getSingerName()))
+                .findFirst()
+                .orElse(null);
+    }
+
     public List<SingerEntity> getAll() {
         return new ArrayList<>(storage.values());
     }
