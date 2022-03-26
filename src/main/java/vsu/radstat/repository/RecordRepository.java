@@ -60,7 +60,6 @@ public class RecordRepository {
     public void insert(RecordEntity entity) throws Exception {
         if (storage.containsKey(entity.getRecordId())) {
             throw new Exception("Already has this album");
-
         }
         storage.put(entity.getRecordId(), entity);
     }

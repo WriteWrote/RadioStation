@@ -49,6 +49,8 @@ public class AddonsService {
         recordEntity.setTime(dto.getTime());
         recordEntity.setYear(dto.getYear());
 
+        //CAREFUL THERE
+        // TODO: NEED TO CHECK WHAT RETURNS IF THERE IS NO AUTHORS/ALBUMS/SINGERS
         try {
 
             Integer authorId = authorRepository.findByName(dto.getAuthorName()).getAuthorId();
