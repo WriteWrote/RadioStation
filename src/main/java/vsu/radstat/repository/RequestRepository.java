@@ -41,7 +41,6 @@ public class RequestRepository {
     public void insert(RequestEntity entity) throws Exception {
         if (storage.containsKey(entity.getRequestId())) {
             throw new Exception("Already has this request");
-
         }
         storage.put(entity.getRequestId(), entity);
     }

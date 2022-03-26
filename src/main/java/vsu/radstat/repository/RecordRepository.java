@@ -14,7 +14,7 @@ public class RecordRepository {
         return storage.get(id);
     }
 
-    public RecordEntity findByName(String name){
+    public RecordEntity findByComposition(String name){
         return storage.values().stream()
                 .filter(x -> name.equals(x.getComposition()))
                 .findFirst()
