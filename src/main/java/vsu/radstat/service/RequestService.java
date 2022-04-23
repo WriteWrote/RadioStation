@@ -2,7 +2,7 @@ package vsu.radstat.service;
 
 import lombok.RequiredArgsConstructor;
 import vsu.radstat.model.entity.RequestEntity;
-import vsu.radstat.model.input_dto.request.FullRequestDto;
+import vsu.radstat.model.input.request.FullRequestDto;
 import vsu.radstat.repository.RequestRepository;
 
 @RequiredArgsConstructor

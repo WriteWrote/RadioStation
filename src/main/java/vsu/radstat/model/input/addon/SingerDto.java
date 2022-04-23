@@ -1,4 +1,4 @@
-package vsu.radstat.model.input_dto.addon;
+package vsu.radstat.model.input.addon;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;

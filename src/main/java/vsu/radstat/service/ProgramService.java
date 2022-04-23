@@ -3,14 +3,13 @@ package vsu.radstat.service;
 import lombok.RequiredArgsConstructor;
 import vsu.radstat.model.entity.RecordEntity;
 import vsu.radstat.model.entity.RequestEntity;
-import vsu.radstat.model.input_dto.addon.RecordDto;
-import vsu.radstat.model.input_dto.request.RequestProgramDto;
-import vsu.radstat.model.output_dto.OutputProgramDto;
+import vsu.radstat.model.input.addon.RecordDto;
+import vsu.radstat.model.input.request.RequestProgramDto;
+import vsu.radstat.model.responce.OutputProgramDto;
 import vsu.radstat.repository.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class ProgramService {

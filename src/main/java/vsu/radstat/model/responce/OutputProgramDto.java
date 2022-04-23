@@ -1,8 +1,8 @@
-package vsu.radstat.model.output_dto;
+package vsu.radstat.model.responce;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-import vsu.radstat.model.input_dto.addon.RecordDto;
+import vsu.radstat.model.input.addon.RecordDto;
 
 import java.time.LocalDateTime;
 import java.util.List;

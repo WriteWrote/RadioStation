@@ -1,12 +1,12 @@
 package vsu.radstat;
 
-import vsu.radstat.model.input_dto.addon.AlbumDto;
-import vsu.radstat.model.input_dto.addon.AuthorDto;
-import vsu.radstat.model.input_dto.addon.RecordDto;
-import vsu.radstat.model.input_dto.addon.SingerDto;
-import vsu.radstat.model.input_dto.request.FullRequestDto;
-import vsu.radstat.model.input_dto.request.RequestProgramDto;
-import vsu.radstat.model.output_dto.OutputProgramDto;
+import vsu.radstat.model.input.addon.AlbumDto;
+import vsu.radstat.model.input.addon.AuthorDto;
+import vsu.radstat.model.input.addon.RecordDto;
+import vsu.radstat.model.input.addon.SingerDto;
+import vsu.radstat.model.input.request.FullRequestDto;
+import vsu.radstat.model.input.request.RequestProgramDto;
+import vsu.radstat.model.responce.OutputProgramDto;
 import vsu.radstat.repository.*;
 import vsu.radstat.service.AddonsService;
 import vsu.radstat.service.ProgramService;
@@ -18,26 +18,29 @@ import java.util.Random;
 
 public class AppRun {
     public static void main(String[] args) {
+        ProgramRepository programRepository = new ProgramRepository();
+        RequestRepository requestRepository = new RequestRepository();
+        RecordRepository recordRepository = new RecordRepository();
+        AuthorRepository authorRepository = new AuthorRepository();
+        AlbumRepository albumRepository = new AlbumRepository();
+        GenreRepository genreRepository = new GenreRepository();
+        SingerRepository singerRepository = new SingerRepository();
+
         ProgramService programService = new ProgramService(
-                new ProgramRepository(),
-                new RequestRepository(),
-                new RecordRepository(),
-                new AuthorRepository(),
-                new AlbumRepository(),
-                new GenreRepository(),
-                new SingerRepository());
+                programRepository, requestRepository, recordRepository,
+                authorRepository, albumRepository, genreRepository, singerRepository);
 
-        AddonsService addonsService = new AddonsService(new AlbumRepository(), new AuthorRepository(),
-                new GenreRepository(), new SingerRepository(), new RecordRepository());
+        AddonsService addonsService = new AddonsService(albumRepository,authorRepository,
+                genreRepository, singerRepository, recordRepository);
 
-        RequestService requestService = new RequestService(new RequestRepository());
+        RequestService requestService = new RequestService(requestRepository);
 
         // insert author, album, singer
         AlbumDto albumDto = new AlbumDto();
         albumDto.setAlbumName("Album1");
         try {
             addonsService.createAlbum(albumDto);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error while creating new album");
         }
 
@@ -45,7 +48,7 @@ public class AppRun {
         albumDto.setAlbumName("Author1");
         try {
             addonsService.createAuthor(authorDto);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error while creating new author");
         }
 
@@ -53,7 +56,7 @@ public class AppRun {
         albumDto.setAlbumName("Singer1");
         try {
             addonsService.createSinger(singerDto);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error while creating new singer");
         }
 

@@ -1,9 +1,8 @@
-package vsu.radstat.model.input_dto.request;
+package vsu.radstat.model.input.request;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
 
 import java.time.LocalDateTime;

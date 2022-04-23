@@ -2,10 +2,8 @@ package vsu.radstat.service;
 
 import lombok.RequiredArgsConstructor;
 import vsu.radstat.model.entity.*;
-import vsu.radstat.model.input_dto.addon.*;
+import vsu.radstat.model.input.addon.*;
 import vsu.radstat.repository.*;
-
-import java.util.UUID;
 
 @RequiredArgsConstructor
 public class AddonsService {
