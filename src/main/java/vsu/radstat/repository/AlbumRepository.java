@@ -1,5 +1,6 @@
 package vsu.radstat.repository;
 
+import vsu.radstat.exception.exists.AlbumAlreadyExistsException;
 import vsu.radstat.model.entity.AlbumEntity;
 import vsu.radstat.model.entity.AuthorEntity;
 
@@ -26,10 +27,10 @@ public class AlbumRepository {
         return new ArrayList<>(storage.values());
     }
 
-    public void insert(AlbumEntity entity) throws Exception {
+    public void insert(AlbumEntity entity) throws AlbumAlreadyExistsException {
         if (storage.containsKey(entity.getAlbumId())) {
-            throw new Exception("Already has this album");
-
+            //throw new Exception("Already has this album");
+            throw new AlbumAlreadyExistsException(entity.getAlbumId());
         }
         storage.put(entity.getAlbumId(), entity);
     }

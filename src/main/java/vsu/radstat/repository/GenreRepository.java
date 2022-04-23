@@ -1,5 +1,6 @@
 package vsu.radstat.repository;
 
+import vsu.radstat.exception.exists.GenreAlreadyExistsException;
 import vsu.radstat.model.entity.GenreEntity;
 
 import java.util.ArrayList;
@@ -25,10 +26,10 @@ public class GenreRepository {
         return new ArrayList<>(storage.values());
     }
 
-    public void insert(GenreEntity entity) throws Exception {
+    public void insert(GenreEntity entity) throws GenreAlreadyExistsException {
         if (storage.containsKey(entity.getGenreId())) {
-            throw new Exception("Already has this genre");
-
+            //throw new Exception("Already has this genre");
+            throw new GenreAlreadyExistsException(entity.getGenreId());
         }
         storage.put(entity.getGenreId(), entity);
     }

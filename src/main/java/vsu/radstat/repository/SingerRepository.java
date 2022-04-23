@@ -1,5 +1,6 @@
 package vsu.radstat.repository;
 
+import vsu.radstat.exception.exists.SingerAlreadyExistsException;
 import vsu.radstat.model.entity.SingerEntity;
 
 import java.util.ArrayList;
@@ -25,10 +26,10 @@ public class SingerRepository {
         return new ArrayList<>(storage.values());
     }
 
-    public void insert(SingerEntity entity) throws Exception {
+    public void insert(SingerEntity entity) throws SingerAlreadyExistsException {
         if (storage.containsKey(entity.getSingerId())) {
-            throw new Exception("Already has this album");
-
+            //throw new Exception("Already has this album");
+            throw new SingerAlreadyExistsException(entity.getSingerId());
         }
         storage.put(entity.getSingerId(), entity);
     }

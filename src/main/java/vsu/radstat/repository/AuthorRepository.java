@@ -1,5 +1,6 @@
 package vsu.radstat.repository;
 
+import vsu.radstat.exception.exists.AuthorAlreadyExistsException;
 import vsu.radstat.model.entity.AuthorEntity;
 
 import java.util.ArrayList;
@@ -25,10 +26,10 @@ public class AuthorRepository {
         return new ArrayList<>(storage.values());
     }
 
-    public void insert(AuthorEntity entity) throws Exception {
+    public void insert(AuthorEntity entity) throws AuthorAlreadyExistsException {
         if (storage.containsKey(entity.getAuthorId())) {
-            throw new Exception("Already has this author");
-
+            //throw new Exception("Already has this author");
+            throw new AuthorAlreadyExistsException(entity.getAuthorId());
         }
         storage.put(entity.getAuthorId(), entity);
     }

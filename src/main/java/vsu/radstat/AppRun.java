@@ -11,6 +11,7 @@ import vsu.radstat.repository.*;
 import vsu.radstat.service.AddonsService;
 import vsu.radstat.service.ProgramService;
 import vsu.radstat.service.RequestService;
+import vsu.radstat.validator.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,15 +26,24 @@ public class AppRun {
         AlbumRepository albumRepository = new AlbumRepository();
         GenreRepository genreRepository = new GenreRepository();
         SingerRepository singerRepository = new SingerRepository();
+        CreateAlbumValidator albumValidator = new CreateAlbumValidator();
+        CreateRecordValidator recordValidator = new CreateRecordValidator();
+        CreateSingerValidator singerValidator = new CreateSingerValidator();
+        CreateGenreValidator genreValidator = new CreateGenreValidator();
+        CreateAuthorValidator authorValidator = new CreateAuthorValidator();
+        CreateProgramRequestValidator programRequestValidator = new CreateProgramRequestValidator();
+        RecordRequestValidator requestValidator = new RecordRequestValidator();
 
         ProgramService programService = new ProgramService(
                 programRepository, requestRepository, recordRepository,
-                authorRepository, albumRepository, genreRepository, singerRepository);
+                authorRepository, albumRepository, genreRepository, singerRepository,
+                programRequestValidator);
 
         AddonsService addonsService = new AddonsService(albumRepository,authorRepository,
-                genreRepository, singerRepository, recordRepository);
+                genreRepository, singerRepository, recordRepository,
+                albumValidator, authorValidator, genreValidator, singerValidator, recordValidator);
 
-        RequestService requestService = new RequestService(requestRepository);
+        RequestService requestService = new RequestService(requestRepository, requestValidator);
 
         // insert author, album, singer
         AlbumDto albumDto = new AlbumDto();

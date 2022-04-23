@@ -7,6 +7,7 @@ import vsu.radstat.model.input.addon.RecordDto;
 import vsu.radstat.model.input.request.RequestProgramDto;
 import vsu.radstat.model.responce.OutputProgramDto;
 import vsu.radstat.repository.*;
+import vsu.radstat.validator.CreateProgramRequestValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,12 @@ public class ProgramService {
     private final GenreRepository genreRepository;
     private final SingerRepository singerRepository;
 
+    private final CreateProgramRequestValidator programRequestValidator;
+
     public OutputProgramDto createProgram(RequestProgramDto dto) {
+        if (!programRequestValidator.validate(dto)){
+            throw new RuntimeException();
+        }
         //private List<RecordEntity> records;
 
         OutputProgramDto output = new OutputProgramDto();
@@ -34,6 +40,7 @@ public class ProgramService {
         // this is puppet logic
         // just taking first full request and taking first record from this full request
 
+        //Todo: вставить защиту, что никаких реквестов нет
         List<RequestEntity> requestEntityList = requestRepository.findAllUncompleted();
         List<RecordEntity> recordEntityList = new ArrayList<>();
 
