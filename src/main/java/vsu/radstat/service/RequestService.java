@@ -2,14 +2,14 @@ package vsu.radstat.service;
 
 import lombok.RequiredArgsConstructor;
 import vsu.radstat.model.entity.RequestEntity;
-import vsu.radstat.model.input.request.FullRequestDto;
+import vsu.radstat.model.input.request.FullRequestRecordDto;
 import vsu.radstat.repository.RequestRepository;
 
 @RequiredArgsConstructor
 public class RequestService {
     private final RequestRepository requestRepository;
 
-    public void createRequest(FullRequestDto dto) throws Exception {
+    public void createRequest(FullRequestRecordDto dto) throws Exception {
         // todo: insert validation of request here
 
         RequestEntity requestEntity = new RequestEntity();

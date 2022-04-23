@@ -4,7 +4,7 @@ import vsu.radstat.model.input.addon.AlbumDto;
 import vsu.radstat.model.input.addon.AuthorDto;
 import vsu.radstat.model.input.addon.RecordDto;
 import vsu.radstat.model.input.addon.SingerDto;
-import vsu.radstat.model.input.request.FullRequestDto;
+import vsu.radstat.model.input.request.FullRequestRecordDto;
 import vsu.radstat.model.input.request.RequestProgramDto;
 import vsu.radstat.model.responce.OutputProgramDto;
 import vsu.radstat.repository.*;
@@ -61,7 +61,7 @@ public class AppRun {
         }
 
 
-        FullRequestDto recordRequest = new FullRequestDto();
+        FullRequestRecordDto recordRequest = new FullRequestRecordDto();
 
         recordRequest.setComposition("Composition1");
         recordRequest.setAuthor("Author1");

@@ -7,7 +7,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-public class FullRequestDto {
+public class FullRequestRecordDto {
     // get rid of @notblank
     @NotBlank
     private String composition;
