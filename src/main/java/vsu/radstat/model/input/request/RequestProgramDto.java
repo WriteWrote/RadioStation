@@ -1,20 +1,18 @@
 package vsu.radstat.model.input.request;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
 public class RequestProgramDto {
-    @NotEmpty
+    @NotNull
     @Min(1)
     @Max(3)
     private Integer length;
-    @NotEmpty
+    @NotBlank
     private String genreName;
-    @NotEmpty
+    @NotNull
     private LocalDateTime date;
 }

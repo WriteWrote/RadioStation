@@ -17,7 +17,7 @@ public class RecordDto {
     @NotEmpty
     private String albumName;
 
-    @NotEmpty
+    @Positive
     @Min(1000)
     private Integer year;
 

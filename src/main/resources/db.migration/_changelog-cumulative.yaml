@@ -8,5 +8,5 @@ databaseChangeLog:
       comment: Create Initial DB Structure
       changes:
         - sqlFile:
-            path:
+            path: RS-001-202203241017.sql
             relativeToChangelogFile: true
