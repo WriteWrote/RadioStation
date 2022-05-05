@@ -1,5 +1,6 @@
 package vsu.radstat.repository;
 
+import org.springframework.stereotype.Repository;
 import vsu.radstat.exception.exists.AlbumAlreadyExistsException;
 import vsu.radstat.model.entity.AlbumEntity;
 import vsu.radstat.model.entity.AuthorEntity;

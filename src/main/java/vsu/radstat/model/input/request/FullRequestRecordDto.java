@@ -1,5 +1,6 @@
 package vsu.radstat.model.input.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
@@ -8,16 +9,19 @@ import java.time.LocalDate;
 
 @Data
 public class FullRequestRecordDto {
-    // get rid of @notblank
-    @NotBlank
+    @JsonProperty("record_name")
     private String composition;
-    @NotBlank
+
+    @JsonProperty("author_name")
     private String author;
-    @NotBlank
+
+    @JsonProperty("album_name")
     private String album;
-    @NotBlank
+
+    @JsonProperty("singer_name")
     private String singer;
 
+    @JsonProperty("date")
     @NotEmpty
     private LocalDate date;
 }
