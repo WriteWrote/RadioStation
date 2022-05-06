@@ -6,15 +6,15 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-@Entity
-@Table(name = "genre", schema = "radiostation")
+//@Entity
+//@Table(name = "genre", schema = "radiostation")
 public class GenreEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "genre_id")
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  //  @Column(name = "genre_id")
     private Integer genreId;
 
-    @Column(name = "genre_name")
-    @NotEmpty
+    //@Column(name = "genre_name")
+//    @NotEmpty
     private String genreName;
 }

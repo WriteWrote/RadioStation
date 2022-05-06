@@ -10,26 +10,26 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@Entity
-@Table(name = "program", schema = "radiostation")
+//@Entity
+//@Table(name = "program", schema = "radiostation")
 public class ProgramEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "program_id")
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  //  @Column(name = "program_id")
     private Integer programId;
 
-    @Column(name = "length")
-    @NotNull
+    //@Column(name = "length")
+//    @NotNull
     private Integer length;
 
-    @Column(name = "genre_id")
-    @NotNull
+   // @Column(name = "genre_id")
+//    @NotNull
     private Integer genreId;
 
-    @Column(name = "date")
-    @NotNull
+  //  @Column(name = "date")
+//    @NotNull
     private LocalDateTime date;
 
-    @ManyToMany
+//    @ManyToMany
     private List<RecordEntity> records;
 }

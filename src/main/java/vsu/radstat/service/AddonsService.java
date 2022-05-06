@@ -1,6 +1,7 @@
 package vsu.radstat.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import vsu.radstat.exception.exists.AlbumAlreadyExistsException;
 import vsu.radstat.exception.exists.AuthorAlreadyExistsException;
 import vsu.radstat.exception.exists.GenreAlreadyExistsException;
@@ -15,6 +16,7 @@ import vsu.radstat.validator.*;
 
 import javax.xml.validation.Validator;
 
+@Service
 @RequiredArgsConstructor
 public class AddonsService {
     private final AlbumRepository albumRepository;

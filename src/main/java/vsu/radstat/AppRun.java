@@ -1,5 +1,6 @@
 package vsu.radstat;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import vsu.radstat.model.input.addon.AlbumDto;
 import vsu.radstat.model.input.addon.AuthorDto;
@@ -21,6 +22,7 @@ import java.util.Random;
 @SpringBootApplication
 public class AppRun {
     public static void main(String[] args) {
+        SpringApplication.run(AppRun.class, args);
 //        ProgramRepository programRepository = new ProgramRepository();
 //        RequestRepository requestRepository = new RequestRepository();
 //        RecordRepository recordRepository = new RecordRepository();

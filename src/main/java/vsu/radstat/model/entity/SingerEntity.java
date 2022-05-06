@@ -7,15 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Data
-@Entity
-@Table(name = "singer", schema = "radiostation")
+//@Entity
+//@Table(name = "singer", schema = "radiostation")
 public class SingerEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "singer_id")
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "singer_id")
     private Integer singerId;
 
-    @Column(name = "singer_name")
-    @NotEmpty
+  //  @Column(name = "singer_name")
+ //   @NotEmpty
     private String singerName;
 }
