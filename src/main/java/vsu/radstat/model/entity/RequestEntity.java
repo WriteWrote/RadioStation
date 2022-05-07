@@ -33,6 +33,9 @@ public class RequestEntity {
     @Column(name = "singer_name")
     private String singer;
 
+    @Column(name = "genre_name")
+    private String genre;
+
     @Column(name = "date")
     @NotNull
     private Instant date;

@@ -22,6 +22,8 @@ public interface RecordRepository extends CrudRepository<RecordEntity, Integer>,
 
     List<RecordEntity> findAllByAlbumId(@NotNull Integer albumId);
 
+    List<RecordEntity> findAllByGenreId(@NotNull Integer genreId);
+
     List<RecordEntity> findAllByYear(@NotNull Integer year);
 
     List<RecordEntity> findAllByTimeLessThan(@NotNull Double time);

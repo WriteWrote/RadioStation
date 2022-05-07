@@ -35,6 +35,10 @@ public class RecordEntity {
     @NotNull
     private Integer albumId;
 
+    @Column(name = "genre_id")
+    @NotNull
+    private Integer genreId;
+
     @Column(name = "year")
     @NotNull
     private Integer year;
