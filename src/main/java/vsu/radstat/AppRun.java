@@ -2,22 +2,6 @@ package vsu.radstat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import vsu.radstat.model.input.addon.AlbumDto;
-import vsu.radstat.model.input.addon.AuthorDto;
-import vsu.radstat.model.input.addon.RecordDto;
-import vsu.radstat.model.input.addon.SingerDto;
-import vsu.radstat.model.input.request.FullRequestRecordDto;
-import vsu.radstat.model.input.request.RequestProgramDto;
-import vsu.radstat.model.responce.OutputProgramDto;
-import vsu.radstat.repository.*;
-import vsu.radstat.service.AddonsService;
-import vsu.radstat.service.ProgramService;
-import vsu.radstat.service.RequestService;
-import vsu.radstat.validator.*;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Random;
 
 @SpringBootApplication
 public class AppRun {
