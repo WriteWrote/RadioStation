@@ -3,10 +3,13 @@ package vsu.radstat.model.input.request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 public class RequestProgramDto {
     @JsonProperty("length")
     @NotNull
@@ -20,5 +23,6 @@ public class RequestProgramDto {
 
     @JsonProperty("date")
     @NotNull
+    @FutureOrPresent(message = "date.is-past")
     private LocalDateTime date;
 }

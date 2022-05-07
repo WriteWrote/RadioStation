@@ -3,8 +3,11 @@ package vsu.radstat.model.input.addon;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class RecordDto {
     @JsonProperty("record_name")
     @NotEmpty

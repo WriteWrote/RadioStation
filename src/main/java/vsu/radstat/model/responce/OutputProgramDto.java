@@ -3,14 +3,17 @@ package vsu.radstat.model.responce;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import vsu.radstat.model.input.addon.RecordDto;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 public class OutputProgramDto {
-    @JsonProperty("length")
+    //@JsonProperty("length")
     @NotEmpty
     private Integer length;
 
@@ -18,7 +21,7 @@ public class OutputProgramDto {
     @NotEmpty
     private String genre;
 
-    @JsonProperty("date")
+    //@JsonProperty("date")
     @NotEmpty
     private LocalDateTime date;
 
