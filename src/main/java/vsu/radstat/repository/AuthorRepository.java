@@ -1,37 +1,17 @@
 package vsu.radstat.repository;
 
-import vsu.radstat.exception.exists.AuthorAlreadyExistsException;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import vsu.radstat.model.entity.AuthorEntity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class AuthorRepository {
-    private final Map<Integer, AuthorEntity> storage = new HashMap<>();
+@Repository
+public interface AuthorRepository extends CrudRepository<AuthorEntity,Integer>, JpaRepository<AuthorEntity,Integer> {
+    AuthorEntity findByAuthorId(Integer authorId);
+    AuthorEntity findByAuthorName(String authorName);
 
-    public AuthorEntity findById(Integer id) {
-        return storage.get(id);
-    }
-
-    public AuthorEntity findByName(String name){
-        return storage.values().stream()
-                .filter(x -> name.equals(x.getAuthorName()))
-                .findFirst()
-                .orElse(null);
-    }
-
-    public List<AuthorEntity> getAll() {
-        return new ArrayList<>(storage.values());
-    }
-
-    public void insert(AuthorEntity entity) throws AuthorAlreadyExistsException {
-        if (storage.containsKey(entity.getAuthorId())) {
-            //throw new Exception("Already has this author");
-            throw new AuthorAlreadyExistsException(entity.getAuthorId());
-        }
-        storage.put(entity.getAuthorId(), entity);
-    }
-
+    @Override
+    List<AuthorEntity> findAll();
 }

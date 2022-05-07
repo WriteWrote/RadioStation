@@ -1,37 +1,17 @@
 package vsu.radstat.repository;
 
-import vsu.radstat.exception.exists.GenreAlreadyExistsException;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import vsu.radstat.model.entity.GenreEntity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class GenreRepository {
-    private final Map<Integer, GenreEntity> storage = new HashMap<>();
+@Repository
+public interface GenreRepository extends CrudRepository<GenreEntity, Integer>, JpaRepository<GenreEntity, Integer> {
+    GenreEntity findByGenreId(Integer genreId);
+    GenreEntity findByGenreName(String genreName);
 
-    public GenreEntity findById(Integer id) {
-        return storage.get(id);
-    }
-
-    public GenreEntity findByName(String name){
-        return storage.values().stream()
-                .filter(x -> name.equals(x.getGenreName()))
-                .findFirst()
-                .orElse(null);
-    }
-
-    public List<GenreEntity> getAll() {
-        return new ArrayList<>(storage.values());
-    }
-
-    public void insert(GenreEntity entity) throws GenreAlreadyExistsException {
-        if (storage.containsKey(entity.getGenreId())) {
-            //throw new Exception("Already has this genre");
-            throw new GenreAlreadyExistsException(entity.getGenreId());
-        }
-        storage.put(entity.getGenreId(), entity);
-    }
-
+    @Override
+    List<GenreEntity> findAll();
 }

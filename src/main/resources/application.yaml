@@ -13,4 +13,4 @@ spring:
     properties:
       hibernate.dialect: org.hibernate.dialect.PostgreSQL10Dialect
   liquibase:
-    change-log: classpath:db/migration/changelog.yaml
+    change-log: classpath:changelog.yaml
