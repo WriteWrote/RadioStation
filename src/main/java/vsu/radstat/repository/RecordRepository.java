@@ -18,4 +18,18 @@ public interface RecordRepository extends CrudRepository<RecordEntity, Integer>,
 
     List<RecordEntity> findAllByAuthorId(@NotNull Integer authorId);
 
+    List<RecordEntity> findAllBySingerId(@NotNull Integer singerId);
+
+    List<RecordEntity> findAllByAlbumId(@NotNull Integer albumId);
+
+    List<RecordEntity> findAllByYear(@NotNull Integer year);
+
+    List<RecordEntity> findAllByTimeLessThan(@NotNull Double time);
+
+    List<RecordEntity> findAllByTimeBetween(@NotNull Double time, @NotNull Double time2);
+
+    List<RecordEntity> findAllByRatingGreaterThan(@NotNull Double rating);
+
+    List<RecordEntity> findAllByRatingBetween(@NotNull Double rating, @NotNull Double rating2);
+
 }
