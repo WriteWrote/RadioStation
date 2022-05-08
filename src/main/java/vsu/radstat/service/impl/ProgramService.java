@@ -9,6 +9,8 @@ import vsu.radstat.model.responce.OutputProgramDto;
 import vsu.radstat.repository.ProgramRepository;
 import vsu.radstat.service.IProgramService;
 
+import javax.validation.Valid;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +23,24 @@ public class ProgramService implements IProgramService {
     private final ProgramMapper programMap;
 
     @Override
-    public OutputProgramDto createProgram(RequestProgramDto dto) {
+    public OutputProgramDto createProgram(@Valid RequestProgramDto dto) {
         // made dto
 
          return null;
+    }
+
+    @Override
+    public OutputProgramDto findByProgramId(Integer id) {
+        return null;
+    }
+
+    @Override
+    public List<OutputProgramDto> findAllByDate(Instant date) {
+        return null;
+    }
+
+    @Override
+    public List<OutputProgramDto> findAllByLengthBetween(Integer l1, Integer l2) {
+        return null;
     }
 }

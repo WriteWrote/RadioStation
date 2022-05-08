@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class FullRequestRecordDto {
+public class RequestDto {
     @JsonProperty("record_name")
     private String composition;
 
