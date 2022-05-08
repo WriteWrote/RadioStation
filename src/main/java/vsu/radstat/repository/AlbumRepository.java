@@ -8,6 +8,7 @@ import vsu.radstat.model.entity.AlbumEntity;
 
 import java.util.List;
 
+// jpa == crud
 @Repository
 public interface AlbumRepository extends CrudRepository<AlbumEntity, Integer>, JpaRepository<AlbumEntity,Integer> {
     AlbumEntity findByAlbumId(@NotNull Integer albumId);

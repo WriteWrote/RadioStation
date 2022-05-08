@@ -20,8 +20,8 @@ public interface ProgramMapper {
     RequestEntity toEntity(RequestProgramDto dto);
 
     //do i need this?
-    @Mapping(target = "genre_name", source = "genre")
-    RequestEntity toEntity(OutputProgramDto dto);
+//    @Mapping(target = "genre_name", source = "genre")
+//    RequestEntity toEntity(OutputProgramDto dto);
 
     List<OutputProgramDto> fromEntities(Iterable<ProgramEntity> entities);
 }
