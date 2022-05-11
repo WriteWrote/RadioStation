@@ -18,12 +18,13 @@ public class RecordsController {
     }
 
     @PostMapping("/record")
-    public RecordDto createRecord(RecordDto dto){
+    public RecordDto createRecord(@RequestBody RecordDto dto){
         return service.createRecord(dto);
     }
+
     @GetMapping("/record/{recordId}")
-    public RecordDto getRecord(@PathVariable Integer id){
-        return service.findByRecordId(id);
+    public RecordDto getRecord(@PathVariable Integer recordId){
+        return service.findByRecordId(recordId);
     }
 
     @GetMapping("/records")

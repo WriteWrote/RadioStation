@@ -16,9 +16,6 @@ import java.util.List;
 public class AddonsController {
     private final AddonsService service;
 
-    //ToDo: finish it before
-    //Todo: finishing request controller
-    //Todo: then finish services
     @Autowired
     public AddonsController(AddonsService service) {
         this.service = service;
