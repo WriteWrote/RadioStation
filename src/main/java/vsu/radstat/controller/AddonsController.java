@@ -1,14 +1,14 @@
 package vsu.radstat.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vsu.radstat.model.input.addon.AlbumDto;
 import vsu.radstat.model.input.addon.AuthorDto;
+import vsu.radstat.model.input.addon.GenreDto;
+import vsu.radstat.model.input.addon.SingerDto;
 import vsu.radstat.service.impl.AddonsService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,67 +26,65 @@ public class AddonsController {
 
     //===========================================
     @PostMapping("/album")
-    public AlbumDto createAlbum(AlbumDto dto) {
-        return null;
+    public AlbumDto createAlbum(@RequestBody AlbumDto dto) {
+        return service.createAlbum(dto);
     }
 
     @GetMapping("/album/{albumId}")
-    public AlbumDto getAlbum() {
-        return null;
+    public AlbumDto getAlbum(@PathVariable Integer albumId) {
+        return service.findByAlbumId(albumId);
     }
 
     @GetMapping("/albums")
     public List<AlbumDto> getAllAlbums() {
-        return null;
+        return service.findAllAlbums();
     }
 
     //===========================================
     @PostMapping("/author")
-    public AuthorDto createAuthor() {
-        return null;
+    public AuthorDto createAuthor(@RequestBody AuthorDto dto) {
+        return service.createAuthor(dto);
     }
 
     @GetMapping("/author/{authorId}")
-    public AlbumDto getAuthor() {
-        return null;
+    public AuthorDto getAuthor(@PathVariable Integer authorId) {
+        return service.findByAuthorId(authorId);
     }
 
     @GetMapping("/authors")
-    public List<AlbumDto> getAllAuthors() {
-        return null;
+    public List<AuthorDto> getAllAuthors() {
+        return service.findAllAuthors();
     }
 
     //===========================================
     @PostMapping("/genre")
-    public AuthorDto createGenre() {
-        return null;
+    public GenreDto createGenre(@RequestBody GenreDto dto) {
+        return service.createGenre(dto);
     }
 
     @GetMapping("/genre/{genreId}")
-    public AlbumDto getGenre() {
-        return null;
+    public GenreDto getGenre(@PathVariable Integer genreId) {
+        return service.findByGenreId(genreId);
     }
 
     @GetMapping("/genres")
-    public List<AlbumDto> getAllGenres() {
-        return null;
+    public List<GenreDto> getAllGenres() {
+        return service.findAllGenres();
     }
 
     //===========================================
     @PostMapping("/singer")
-    public AuthorDto createSinger() {
-        return null;
+    public SingerDto createSinger(@RequestBody SingerDto dto) {
+        return service.createSinger(dto);
     }
 
     @GetMapping("/singer/{singerId}")
-    public AlbumDto getSinger() {
-        //return service.findBySingerId();
-        return null;
+    public SingerDto getSinger(@PathVariable Integer singerId) {
+        return service.findBySingerId(singerId);
     }
 
     @GetMapping("/singer")
-    public List<AlbumDto> getAllSingers() {
-        //return service.findAllSingers();
-        return null;
+    public List<SingerDto> getAllSingers() {
+        return service.findAllSingers();
     }
 }
