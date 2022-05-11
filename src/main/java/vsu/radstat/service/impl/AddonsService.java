@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import vsu.radstat.mapper.*;
-import vsu.radstat.model.entity.RecordEntity;
 import vsu.radstat.model.input.addon.*;
 import vsu.radstat.repository.*;
 import vsu.radstat.service.IAddonsService;
@@ -16,7 +15,7 @@ import java.util.Optional;
 @Service
 @Validated
 @RequiredArgsConstructor
-public class AddonsService {
+public class AddonsService implements IAddonsService {
 
     private final AlbumRepository albumRep;
     private final AlbumMapper albumMap;
@@ -44,17 +43,17 @@ public class AddonsService {
 
     @Override
     public AlbumDto findByAlbumId(Integer id) {
-        return null;
+        return albumMap.fromEntity(albumRep.findByAlbumId(id));
     }
 
     @Override
     public AlbumDto findByAlbumName(String name) {
-        return null;
+        return albumMap.fromEntity(albumRep.findByAlbumName(name));
     }
 
     @Override
     public List<AlbumDto> findAllAlbums() {
-        return null;
+        return albumMap.fromEntities(albumRep.findAll());
     }
 
     @Override
@@ -68,17 +67,17 @@ public class AddonsService {
 
     @Override
     public AuthorDto findByAuthorId(Integer id) {
-        return null;
+        return authorMap.fromEntity(authorRep.findByAuthorId(id));
     }
 
     @Override
     public AuthorDto findByAuthorName(String name) {
-        return null;
+        return authorMap.fromEntity(authorRep.findByAuthorName(name));
     }
 
     @Override
     public List<AuthorDto> findAllAuthors() {
-        return null;
+        return authorMap.fromEntities(authorRep.findAll());
     }
 
     @Override
@@ -92,17 +91,17 @@ public class AddonsService {
 
     @Override
     public GenreDto findByGenreId(Integer id) {
-        return null;
+        return genreMap.fromEntity(genreRep.findByGenreId(id));
     }
 
     @Override
     public GenreDto findByGenreName(String name) {
-        return null;
+        return genreMap.fromEntity(genreRep.findByGenreName(name));
     }
 
     @Override
     public List<GenreDto> findAllGenres() {
-        return null;
+        return genreMap.fromEntities(genreRep.findAll());
     }
 
     @Override
@@ -116,17 +115,17 @@ public class AddonsService {
 
     @Override
     public SingerDto findBySingerId(Integer id) {
-        return null;
+        return singerMap.fromEntity(singerRep.findBySingerId(id));
     }
 
     @Override
     public SingerDto findBySingerName(String name) {
-        return null;
+        return singerMap.fromEntity(singerRep.findBySingerName(name));
     }
 
     @Override
     public List<SingerDto> findAllSingers() {
-        return null;
+        return singerMap.fromEntities(singerRep.findAll());
     }
 
     @Override
@@ -140,61 +139,61 @@ public class AddonsService {
 
     @Override
     public RecordDto findByRecordId(Integer id) {
-        return null;
+        return recordMap.fromEntity(recordRep.findByRecordId(id));
     }
 
     @Override
     public RecordDto findByRecordName(String name) {
-        return null;
+        return recordMap.fromEntity(recordRep.findByRecordName(name));
     }
 
     @Override
     public List<RecordDto> findAllRecords() {
-        return null;
+        return recordMap.fromEntities(recordRep.findAll());
     }
 
     @Override
-    public List<RecordEntity> findAllByAuthorId(Integer authorId) {
-        return null;
+    public List<RecordDto> findAllByAuthorId(Integer authorId) {
+        return recordMap.fromEntities(recordRep.findAllByAuthorId(authorId));
     }
 
     @Override
-    public List<RecordEntity> findAllBySingerId(Integer singerId) {
-        return null;
+    public List<RecordDto> findAllBySingerId(Integer singerId) {
+        return recordMap.fromEntities(recordRep.findAllBySingerId(singerId));
     }
 
     @Override
-    public List<RecordEntity> findAllByAlbumId(Integer albumId) {
-        return null;
+    public List<RecordDto> findAllByAlbumId(Integer albumId) {
+        return recordMap.fromEntities(recordRep.findAllByAlbumId(albumId));
     }
 
     @Override
-    public List<RecordEntity> findAllByGenreId(Integer genreId) {
-        return null;
+    public List<RecordDto> findAllByGenreId(Integer genreId) {
+        return recordMap.fromEntities(recordRep.findAllByGenreId(genreId));
     }
 
     @Override
-    public List<RecordEntity> findAllByYear(Integer year) {
-        return null;
+    public List<RecordDto> findAllByYear(Integer year) {
+        return recordMap.fromEntities(recordRep.findAllByYear(year));
     }
 
     @Override
-    public List<RecordEntity> findAllByTimeLessThan(Double time) {
-        return null;
+    public List<RecordDto> findAllByTimeLessThan(Double time) {
+        return recordMap.fromEntities(recordRep.findAllByTimeLessThan(time));
     }
 
     @Override
-    public List<RecordEntity> findAllByTimeBetween(Double time, Double time2) {
-        return null;
+    public List<RecordDto> findAllByTimeBetween(Double time, Double time2) {
+        return recordMap.fromEntities(recordRep.findAllByTimeBetween(time, time2));
     }
 
     @Override
-    public List<RecordEntity> findAllByRatingGreaterThan(Double rating) {
-        return null;
+    public List<RecordDto> findAllByRatingGreaterThan(Double rating) {
+        return recordMap.fromEntities(recordRep.findAllByRatingGreaterThan(rating));
     }
 
     @Override
-    public List<RecordEntity> findAllByRatingBetween(Double rating, Double rating2) {
-        return null;
+    public List<RecordDto> findAllByRatingBetween(Double rating, Double rating2) {
+        return recordMap.fromEntities(recordRep.findAllByRatingBetween(rating, rating2));
     }
 }

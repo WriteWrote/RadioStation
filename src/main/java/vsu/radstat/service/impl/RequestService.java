@@ -31,46 +31,48 @@ public class RequestService implements IRequestService {
 
     @Override
     public RequestDto findByRequestId(Integer id) {
-        return null;
+        return requestRepository.findById(id)
+                .map(requestMapper::fromEntity)
+                .orElse(null);
     }
 
     @Override
     public List<RequestDto> findAll() {
-        return null;
+        return requestMapper.fromEntities(requestRepository.findAll());
     }
 
     @Override
     public List<RequestDto> findAllByAlbum(String name) {
-        return null;
+        return requestMapper.fromEntities(requestRepository.findAllByAlbum(name));
     }
 
     @Override
     public List<RequestDto> findAllByAuthor(String name) {
-        return null;
+        return requestMapper.fromEntities(requestRepository.findAllByAuthor(name));
     }
 
     @Override
     public List<RequestDto> findAllByGenre(String name) {
-        return null;
+        return requestMapper.fromEntities(requestRepository.findAllByGenre(name));
     }
 
     @Override
     public List<RequestDto> findAllBySinger(String name) {
-        return null;
+        return requestMapper.fromEntities(requestRepository.findAllBySinger(name));
     }
 
     @Override
     public List<RequestDto> findAllByComposition(String name) {
-        return null;
+        return requestMapper.fromEntities(requestRepository.findAllByComposition(name));
     }
 
     @Override
     public List<RequestDto> findAllCompletedByDate(Instant date) {
-        return null;
+        return requestMapper.fromEntities(requestRepository.findAllByCompletedAndDate(true, date));
     }
 
     @Override
     public List<RequestDto> findAllByDate(Instant date) {
-        return null;
+        return requestMapper.fromEntities(requestRepository.findAllByDate(date));
     }
 }

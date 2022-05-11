@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "singer", schema = "radiostation")
-public class SingerEntity {
+public class SingerEntity implements SimpleAddonEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "singer_id")

@@ -26,21 +26,21 @@ public class ProgramService implements IProgramService {
     public OutputProgramDto createProgram(@Valid RequestProgramDto dto) {
         // made dto
 
-         return null;
+        return null;
     }
 
     @Override
     public OutputProgramDto findByProgramId(Integer id) {
-        return null;
+        return programMap.fromEntity(programRep.findByProgramId(id));
     }
 
     @Override
     public List<OutputProgramDto> findAllByDate(Instant date) {
-        return null;
+        return programMap.fromEntities(programRep.findAllByDate(date));
     }
 
     @Override
     public List<OutputProgramDto> findAllByLengthBetween(Integer l1, Integer l2) {
-        return null;
+        return programMap.fromEntities(programRep.findAllByLengthBetween(l1, l2));
     }
 }
