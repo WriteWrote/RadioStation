@@ -11,5 +11,5 @@ import lombok.Setter;
 public class GenreDto implements SimpleAddon{
     @JsonProperty("genre_name")
     @NotEmpty
-    private String genreName;
+    private String name;
 }

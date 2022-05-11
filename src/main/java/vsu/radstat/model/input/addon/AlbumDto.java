@@ -11,5 +11,5 @@ import lombok.Setter;
 public class AlbumDto implements SimpleAddon{
     @JsonProperty("album_name")
     @NotEmpty
-    private String albumName;
+    private String name;
 }

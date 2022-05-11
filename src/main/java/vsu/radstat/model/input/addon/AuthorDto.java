@@ -11,5 +11,5 @@ import lombok.Setter;
 public class AuthorDto implements SimpleAddon{
     @JsonProperty("author_name")
     @NotEmpty
-    private String authorName;
+    private String name;
 }
