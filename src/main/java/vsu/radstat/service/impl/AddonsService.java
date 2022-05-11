@@ -16,7 +16,7 @@ import java.util.Optional;
 @Service
 @Validated
 @RequiredArgsConstructor
-public class AddonsService implements IAddonsService {
+public class AddonsService {
 
     private final AlbumRepository albumRep;
     private final AlbumMapper albumMap;

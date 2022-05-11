@@ -13,9 +13,9 @@ public class AlbumEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "album_id")
-    private Integer albumId;
+    private Integer id;
 
     @Column(name = "album_name")
     @NotEmpty
-    private String albumName;
+    private String name;
 }

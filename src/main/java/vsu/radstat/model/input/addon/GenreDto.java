@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GenreDto {
+public class GenreDto implements SimpleAddon{
     @JsonProperty("genre_name")
     @NotEmpty
     private String genreName;

@@ -15,9 +15,9 @@ public class AuthorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id")
-    private Integer authorId;
+    private Integer id;
 
     @Column(name = "author_name")
     @NotEmpty
-    private String authorName;
+    private String name;
 }
