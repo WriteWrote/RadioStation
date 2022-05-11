@@ -23,11 +23,11 @@ public class RecordsController {
     }
     @GetMapping("/record/{recordId}")
     public RecordDto getRecord(@PathVariable Integer id){
-
+        return service.findByRecordId(id);
     }
 
     @GetMapping("/records")
     public List<RecordDto> getAllRecords(){
-
+        return service.findAllRecords();
     }
 }

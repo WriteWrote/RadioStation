@@ -16,19 +16,19 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface RecordMapper {
-    @Mapping(target = "composition", source = "record_name")
-    @Mapping(target = "authorName", source = "author_name")
-    @Mapping(target = "singerName", source = "singer_name")
-    @Mapping(target = "albumName", source = "album_name")
+    // Todo: set ignore for this and map handcrafted
+    @Mapping(target = "authorName", ignore = true)//source = "author_name")
+    @Mapping(target = "singerName", ignore = true)//source = "singer_name")
+    @Mapping(target = "albumName", ignore = true)//source = "album_name")
     RecordDto fromEntity(RecordEntity entity);
 
     List<RecordDto> fromEntities(Iterable<RecordEntity> entities);
 
     // do i need this?
     // @Mapping(target = "record_id", ignore = true)
-    @Mapping(target = "record_name", source = "composition")
-    @Mapping(target = "author_name", source = "authorName")
-    @Mapping(target = "singer_name", source = "singerName")
-    @Mapping(target = "album_name", source = "albumName")
+
+    @Mapping(target = "authorId", ignore = true)//, source = "authorName")
+    @Mapping(target = "singerId", ignore = true)//, source = "singerName")
+    @Mapping(target = "albumId", ignore = true)//source = "albumName")
     RecordEntity toEntity(RecordDto dto);
 }

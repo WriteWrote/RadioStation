@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Getter
@@ -24,5 +25,5 @@ public class RequestProgramDto {
     @JsonProperty("date")
     @NotNull
     @FutureOrPresent(message = "date.is-past")
-    private LocalDateTime date;
+    private Instant date;
 }

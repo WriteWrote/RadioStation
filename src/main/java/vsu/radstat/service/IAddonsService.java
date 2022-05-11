@@ -43,7 +43,7 @@ public interface IAddonsService {
     public RecordDto createRecord(@Valid RecordDto dto);
 
     public RecordDto findByRecordId(Integer id);
-
+//TOdo: filter json for searchin'
     public RecordDto findByRecordName(String name);
 
     public List<RecordDto> findAllRecords();

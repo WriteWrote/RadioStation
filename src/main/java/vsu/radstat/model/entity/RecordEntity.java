@@ -21,7 +21,7 @@ public class RecordEntity {
 
     @Column(name = "record_name")
     @NotEmpty
-    private String composition;
+    private String recordName;
 
     @Column(name = "author_id")
     @NotNull

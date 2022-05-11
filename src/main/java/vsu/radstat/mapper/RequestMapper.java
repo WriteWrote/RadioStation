@@ -9,16 +9,17 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface RequestMapper {
-    @Mapping(target = "record_name", source = "composition")
-    @Mapping(target = "author_name", source = "authorName")
-    @Mapping(target = "album_name", source = "albumName")
-    @Mapping(target = "singer_name", source = "singerName")
+
+    @Mapping(target = "composition", source = "composition")
+    @Mapping(target = "author", source = "author")
+    @Mapping(target = "album", source = "album")
+    @Mapping(target = "singer", source = "singer")
     RequestDto fromEntity(RequestEntity entity);
 
-    @Mapping(target = "composition", source = "record_name")
-    @Mapping(target = "authorName", source = "author_name")
-    @Mapping(target = "albumName", source = "album_name")
-    @Mapping(target = "singerName", source = "singer_name")
+    @Mapping(target = "composition", source = "composition")
+    @Mapping(target = "author", source = "author")
+    @Mapping(target = "album", source = "album")
+    @Mapping(target = "singer", source = "singer")
     RequestEntity toEntity(RequestDto dto);
 
     List<RequestDto> fromEntities(Iterable<RequestEntity> entities);

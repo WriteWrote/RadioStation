@@ -12,12 +12,13 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ProgramMapper {
-    @Mapping(target = "genre", source = "genre_name")
+    //@Mapping(target = "genre_name", source = "genre")
+    //@Mapping(target = "genre", ignore = true)
     OutputProgramDto fromEntity(ProgramEntity entity);
 
-    @Mapping(target = "genre_name", source = "genre")
+    //@Mapping(target = "genre_name", source = "genre")
     @Mapping(target = "records", ignore = true)
-    RequestEntity toEntity(RequestProgramDto dto);
+    ProgramEntity toEntity(RequestProgramDto dto);
 
     //do i need this?
 //    @Mapping(target = "genre_name", source = "genre")

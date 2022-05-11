@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import vsu.radstat.model.input.addon.RecordDto;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class OutputProgramDto {
 
     //@JsonProperty("date")
     @NotEmpty
-    private LocalDateTime date;
+    private Instant date;
 
     @NotEmpty
     List<RecordDto> records;

@@ -9,9 +9,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RecordDto {
+    //TodO: request dto responce dto
     @JsonProperty("record_name")
     @NotEmpty
-    private String composition;
+    private String recordName;
 
     @JsonProperty("author_name")
     @NotEmpty

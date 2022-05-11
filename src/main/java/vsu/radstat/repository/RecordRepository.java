@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface RecordRepository extends CrudRepository<RecordEntity, Integer>, JpaRepository<RecordEntity, Integer> {
     RecordEntity findByRecordId(@NotNull Integer recordId);
-    RecordEntity findByComposition(@NotNull String composition);
+    RecordEntity findByRecordName(@NotNull String recordName);
 
     @Override
     List<RecordEntity> findAll();

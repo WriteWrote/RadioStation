@@ -16,65 +16,77 @@ import java.util.List;
 public class AddonsController {
     private final AddonsService service;
 
+    //ToDo: finish it before
+    //Todo: finishing request controller
+    //Todo: then finish services
     @Autowired
     public AddonsController(AddonsService service) {
         this.service = service;
     }
+
     //===========================================
     @PostMapping("/album")
-    public AlbumDto createAlbum(AlbumDto dto){
-
+    public AlbumDto createAlbum(AlbumDto dto) {
+        return null;
     }
 
     @GetMapping("/album/{albumId}")
-    public AlbumDto getAlbum(){
-
+    public AlbumDto getAlbum() {
+        return null;
     }
 
     @GetMapping("/albums")
-    public List<AlbumDto> getAllAlbums(){
-
+    public List<AlbumDto> getAllAlbums() {
+        return null;
     }
+
     //===========================================
     @PostMapping("/author")
-    public AuthorDto createAuthor(){
-
+    public AuthorDto createAuthor() {
+        return null;
     }
-    @GetMapping("/author/{authorId}")
-    public AlbumDto getAuthor(){
 
+    @GetMapping("/author/{authorId}")
+    public AlbumDto getAuthor() {
+        return null;
     }
 
     @GetMapping("/authors")
-    public List<AlbumDto> getAllAuthors(){
-
+    public List<AlbumDto> getAllAuthors() {
+        return null;
     }
+
     //===========================================
     @PostMapping("/genre")
-    public AuthorDto createGenre(){
-
+    public AuthorDto createGenre() {
+        return null;
     }
-    @GetMapping("/genre/{genreId}")
-    public AlbumDto getGenre(){
 
+    @GetMapping("/genre/{genreId}")
+    public AlbumDto getGenre() {
+        return null;
     }
 
     @GetMapping("/genres")
-    public List<AlbumDto> getAllGenres(){
-
+    public List<AlbumDto> getAllGenres() {
+        return null;
     }
+
     //===========================================
     @PostMapping("/singer")
-    public AuthorDto createSinger(){
-
+    public AuthorDto createSinger() {
+        return null;
     }
-    @GetMapping("/singer/{singerId}")
-    public AlbumDto getSinger(){
 
+    @GetMapping("/singer/{singerId}")
+    public AlbumDto getSinger() {
+        //return service.findBySingerId();
+        return null;
     }
 
     @GetMapping("/singer")
-    public List<AlbumDto> getAllSingers(){
-
+    public List<AlbumDto> getAllSingers() {
+        //return service.findAllSingers();
+        return null;
     }
 }
