@@ -12,7 +12,7 @@ import vsu.radstat.model.responce.OutputProgramDto;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-11T15:47:27+0300",
+    date = "2022-05-12T09:50:38+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.11 (AdoptOpenJDK)"
 )
 @Component

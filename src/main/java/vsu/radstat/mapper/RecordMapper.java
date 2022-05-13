@@ -20,6 +20,7 @@ public interface RecordMapper {
     @Mapping(target = "authorName", ignore = true)//source = "author_name")
     @Mapping(target = "singerName", ignore = true)//source = "singer_name")
     @Mapping(target = "albumName", ignore = true)//source = "album_name")
+    @Mapping(target = "genreName", ignore = true)
     RecordDto fromEntity(RecordEntity entity);
 
     List<RecordDto> fromEntities(Iterable<RecordEntity> entities);
@@ -30,5 +31,6 @@ public interface RecordMapper {
     @Mapping(target = "authorId", ignore = true)//, source = "authorName")
     @Mapping(target = "singerId", ignore = true)//, source = "singerName")
     @Mapping(target = "albumId", ignore = true)//source = "albumName")
+    @Mapping(target = "genreId", ignore = true)
     RecordEntity toEntity(RecordDto dto);
 }

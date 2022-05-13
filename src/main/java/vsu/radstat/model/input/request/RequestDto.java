@@ -25,6 +25,9 @@ public class RequestDto {
     @JsonProperty("singer_name")
     private String singer;
 
+    @JsonProperty("genre_name")
+    private String genre;
+
     @JsonProperty("date")
     @NotEmpty
     private Instant date;

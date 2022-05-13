@@ -1,7 +1,6 @@
 package vsu.radstat.model.entity;
 
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "singer", schema = "radiostation")
-public class SingerEntity implements SimpleAddonEntity{
+public class SingerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "singer_id")

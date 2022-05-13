@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface SingerRepository extends CrudRepository<SingerEntity, Integer>, JpaRepository<SingerEntity, Integer> {
-    SingerEntity findBySingerId(@NotNull Integer singerId);
-    SingerEntity findBySingerName(@NotNull String singerName);
+    //SingerEntity findBySingerId(@NotNull Integer singerId);
+    SingerEntity findByName(@NotNull String name);
 
     @Override
     List<SingerEntity> findAll();

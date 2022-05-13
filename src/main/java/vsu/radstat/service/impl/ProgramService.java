@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import vsu.radstat.mapper.ProgramMapper;
+import vsu.radstat.model.entity.ProgramEntity;
 import vsu.radstat.model.input.request.RequestProgramDto;
 import vsu.radstat.model.responce.OutputProgramDto;
 import vsu.radstat.repository.ProgramRepository;
@@ -25,6 +26,8 @@ public class ProgramService implements IProgramService {
     @Override
     public OutputProgramDto createProgram(@Valid RequestProgramDto dto) {
         // made dto
+
+        ProgramEntity e = programMap.toEntity(dto);
 
         return null;
     }

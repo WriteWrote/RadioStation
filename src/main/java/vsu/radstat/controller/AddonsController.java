@@ -80,7 +80,7 @@ public class AddonsController {
         return service.findBySingerId(singerId);
     }
 
-    @GetMapping("/singer")
+    @GetMapping("/singers")
     public List<SingerDto> getAllSingers() {
         return service.findAllSingers();
     }

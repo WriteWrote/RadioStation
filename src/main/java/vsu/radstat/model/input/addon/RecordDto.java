@@ -25,6 +25,10 @@ public class RecordDto {
     @NotEmpty
     private String albumName;
 
+    @JsonProperty("genre_name")
+    @NotEmpty
+    private String genreName;
+
     @JsonProperty("year")
     @Positive
     @Min(1000)

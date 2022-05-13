@@ -22,7 +22,7 @@ public class OutputProgramDto {
     @NotEmpty
     private String genre;
 
-    //@JsonProperty("date")
+    @JsonProperty("date")
     @NotEmpty
     private Instant date;
 

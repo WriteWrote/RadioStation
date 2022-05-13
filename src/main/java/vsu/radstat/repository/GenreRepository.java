@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface GenreRepository extends CrudRepository<GenreEntity, Integer>, JpaRepository<GenreEntity, Integer> {
-    GenreEntity findByGenreId(@NotNull Integer genreId);
-    GenreEntity findByGenreName(@NotNull String genreName);
+    //GenreEntity findByGenreId(@NotNull Integer genreId);
+    GenreEntity findByName(@NotNull String name);
 
     @Override
     List<GenreEntity> findAll();

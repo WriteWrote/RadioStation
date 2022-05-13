@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface AuthorRepository extends CrudRepository<AuthorEntity,Integer>, JpaRepository<AuthorEntity,Integer> {
-    AuthorEntity findByAuthorId(@NotNull Integer authorId);
-    AuthorEntity findByAuthorName(@NotNull String authorName);
+    //AuthorEntity findByAuthorId(@NotNull Integer authorId);
+    AuthorEntity findByName(@NotNull String name);
 
     @Override
     List<AuthorEntity> findAll();

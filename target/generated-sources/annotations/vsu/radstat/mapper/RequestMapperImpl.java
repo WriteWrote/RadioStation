@@ -9,7 +9,7 @@ import vsu.radstat.model.input.request.RequestDto;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-11T15:47:27+0300",
+    date = "2022-05-13T16:37:07+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.11 (AdoptOpenJDK)"
 )
 @Component
@@ -27,6 +27,7 @@ public class RequestMapperImpl implements RequestMapper {
         requestDto.setAuthor( entity.getAuthor() );
         requestDto.setAlbum( entity.getAlbum() );
         requestDto.setSinger( entity.getSinger() );
+        requestDto.setGenre( entity.getGenre() );
         requestDto.setDate( entity.getDate() );
 
         return requestDto;
@@ -44,6 +45,7 @@ public class RequestMapperImpl implements RequestMapper {
         requestEntity.setAuthor( dto.getAuthor() );
         requestEntity.setAlbum( dto.getAlbum() );
         requestEntity.setSinger( dto.getSinger() );
+        requestEntity.setGenre( dto.getGenre() );
         requestEntity.setDate( dto.getDate() );
 
         return requestEntity;

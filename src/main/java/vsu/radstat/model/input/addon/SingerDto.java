@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SingerDto implements SimpleAddonDto {
+public class SingerDto {
     @JsonProperty("singer_name")
     @NotEmpty
     private String name;

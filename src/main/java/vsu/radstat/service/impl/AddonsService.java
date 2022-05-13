@@ -1,14 +1,19 @@
 package vsu.radstat.service.impl;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import vsu.radstat.mapper.*;
+import vsu.radstat.model.entity.AlbumEntity;
+import vsu.radstat.model.entity.AuthorEntity;
+import vsu.radstat.model.entity.RecordEntity;
 import vsu.radstat.model.input.addon.*;
 import vsu.radstat.repository.*;
 import vsu.radstat.service.IAddonsService;
 
 import javax.validation.Valid;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,12 +48,15 @@ public class AddonsService implements IAddonsService {
 
     @Override
     public AlbumDto findByAlbumId(Integer id) {
-        return albumMap.fromEntity(albumRep.findByAlbumId(id));
+        return albumRep.findById(id).map(albumMap::fromEntity).orElse(null);
+        //return albumMap.fromEntity(albumRep.findByAlbumId(id));
+        //return null;
     }
 
     @Override
     public AlbumDto findByAlbumName(String name) {
-        return albumMap.fromEntity(albumRep.findByAlbumName(name));
+        //return albumMap.fromEntity(albumRep.findByAlbumName(name));
+        return null;
     }
 
     @Override
@@ -67,12 +75,13 @@ public class AddonsService implements IAddonsService {
 
     @Override
     public AuthorDto findByAuthorId(Integer id) {
-        return authorMap.fromEntity(authorRep.findByAuthorId(id));
+        //return authorMap.fromEntity(authorRep.findByAuthorId(id));
+        return authorRep.findById(id).map(authorMap::fromEntity).orElse(null);
     }
 
     @Override
     public AuthorDto findByAuthorName(String name) {
-        return authorMap.fromEntity(authorRep.findByAuthorName(name));
+        return authorMap.fromEntity(authorRep.findByName(name));
     }
 
     @Override
@@ -91,12 +100,13 @@ public class AddonsService implements IAddonsService {
 
     @Override
     public GenreDto findByGenreId(Integer id) {
-        return genreMap.fromEntity(genreRep.findByGenreId(id));
+        //return genreMap.fromEntity(genreRep.findByGenreId(id));
+        return genreRep.findById(id).map(genreMap::fromEntity).orElse(null);
     }
 
     @Override
     public GenreDto findByGenreName(String name) {
-        return genreMap.fromEntity(genreRep.findByGenreName(name));
+        return genreMap.fromEntity(genreRep.findByName(name));
     }
 
     @Override
@@ -115,12 +125,13 @@ public class AddonsService implements IAddonsService {
 
     @Override
     public SingerDto findBySingerId(Integer id) {
-        return singerMap.fromEntity(singerRep.findBySingerId(id));
+        //return singerMap.fromEntity(singerRep.findBySingerId(id));
+        return singerRep.findById(id).map(singerMap::fromEntity).orElse(null);
     }
 
     @Override
     public SingerDto findBySingerName(String name) {
-        return singerMap.fromEntity(singerRep.findBySingerName(name));
+        return singerMap.fromEntity(singerRep.findByName(name));
     }
 
     @Override
@@ -130,26 +141,65 @@ public class AddonsService implements IAddonsService {
 
     @Override
     public RecordDto createRecord(@Valid RecordDto dto) {
-        return Optional.of(dto)
-                .map(recordMap::toEntity)
-                .map(recordRep::save)
-                .map(recordMap::fromEntity)
-                .orElseThrow();
+        RecordEntity e = recordMap.toEntity(dto);
+        Integer id;
+        // TodO: отправлять внятные сообщения
+        try {
+            id = authorRep.findByName(dto.getAuthorName()).getId();
+            e.setAuthorId(id);
+        } catch (Exception ex) {
+            e.setAuthorId(null);
+        }
+        try {
+            id = albumRep.findByName(dto.getAlbumName()).getId();
+            e.setAlbumId(id);
+        } catch (Exception ex) {
+            e.setAlbumId(null);
+        }
+        try {
+            id = singerRep.findByName(dto.getSingerName()).getId();
+            e.setSingerId(id);
+        } catch (Exception ex) {
+            e.setSingerId(null);
+        }
+        try {
+            id = genreRep.findByName(dto.getGenreName()).getId();
+            e.setGenreId(id);
+        } catch (Exception ex) {
+            e.setGenreId(null);
+        }
+
+        recordRep.save(e);
+//        return Optional.of(e)
+//                .map(recordRep::save)
+//                .map(recordMap::fromEntity)
+//                .orElseThrow();
+        return dto;
     }
 
     @Override
     public RecordDto findByRecordId(Integer id) {
-        return recordMap.fromEntity(recordRep.findByRecordId(id));
+        RecordEntity e = recordRep.findByRecordId(id);
+        return this.ReplaceIdByName(e);
     }
 
     @Override
     public RecordDto findByRecordName(String name) {
-        return recordMap.fromEntity(recordRep.findByRecordName(name));
+        //return recordMap.fromEntity(recordRep.findByRecordName(name));
+        RecordEntity e = recordRep.findByRecordName(name);
+        return this.ReplaceIdByName(e);
     }
 
     @Override
     public List<RecordDto> findAllRecords() {
-        return recordMap.fromEntities(recordRep.findAll());
+        //return recordMap.fromEntities(recordRep.findAll());
+        List<RecordEntity> list = recordRep.findAll();
+        List<RecordDto> result = new LinkedList<>();
+        for (RecordEntity e :
+                list) {
+            result.add(this.ReplaceIdByName(e));
+        }
+        return result;
     }
 
     @Override
@@ -195,5 +245,50 @@ public class AddonsService implements IAddonsService {
     @Override
     public List<RecordDto> findAllByRatingBetween(Double rating, Double rating2) {
         return recordMap.fromEntities(recordRep.findAllByRatingBetween(rating, rating2));
+    }
+
+    private RecordDto ReplaceIdByName(RecordEntity e) {
+
+        RecordDto dto = recordMap.fromEntity(e);
+        String n = "";
+
+        try {
+            n = Optional.of(albumRep.findById(e.getAlbumId()))
+                    .orElseThrow()
+                    .get()
+                    .getName();
+            dto.setAlbumName(n);
+        } catch (Exception ex) {
+            dto.setAlbumName("");
+        }
+        try {
+            n = Optional.of(authorRep.findById(e.getAuthorId()))
+                    .orElseThrow()
+                    .get()
+                    .getName();
+            dto.setAuthorName(n);
+        } catch (Exception ex) {
+            dto.setAuthorName("");
+        }
+        try {
+            n = Optional.of(genreRep.findById(e.getGenreId()))
+                    .orElseThrow()
+                    .get()
+                    .getName();
+            dto.setGenreName(n);
+        } catch (Exception ex) {
+            dto.setGenreName("");
+        }
+        try {
+            n = Optional.of(singerRep.findById(e.getSingerId()))
+                    .orElseThrow()
+                    .get()
+                    .getName();
+            dto.setSingerName(n);
+        } catch (Exception ex) {
+            dto.setSingerName("");
+        }
+
+        return dto;
     }
 }

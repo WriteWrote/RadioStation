@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "album", schema = "radiostation")
-public class AlbumEntity implements SimpleAddonEntity{
+public class AlbumEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "album_id")
