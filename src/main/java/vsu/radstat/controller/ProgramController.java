@@ -10,12 +10,12 @@ import vsu.radstat.model.responce.OutputProgramDto;
 import vsu.radstat.service.impl.ProgramService;
 
 @RestController
-@RequestMapping("/program")
+@RequestMapping("/program/create")
 @RequiredArgsConstructor
 public class ProgramController {
     private final ProgramService programService;
 
-    @GetMapping("/create")
+    @GetMapping()
     public OutputProgramDto createProgram(@RequestBody RequestProgramDto dto){
         return programService.createProgram(dto);
     }

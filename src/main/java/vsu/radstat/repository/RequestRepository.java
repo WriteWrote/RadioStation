@@ -20,6 +20,9 @@ public interface RequestRepository extends CrudRepository<RequestEntity, Integer
     List<RequestEntity> findAllByAlbum(@NotNull String album);
     List<RequestEntity> findAllBySinger(@NotNull String singer);
     List<RequestEntity> findAllByGenre(@NotNull String genre);
+
+    List<RequestEntity> findAllByGenreAndCompleted(@NotNull String genre, @NotNull Boolean completed);
+
     List<RequestEntity> findAllByComposition(@NotNull String composition);
     List<RequestEntity> findAllByDate(@NotNull Instant date);
     List<RequestEntity> findAllByCompleted(boolean completed);
