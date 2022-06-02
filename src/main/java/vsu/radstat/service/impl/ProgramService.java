@@ -60,41 +60,33 @@ public class ProgramService implements IProgramService {
                 }
             } else if (!Objects.equals(currReq.getAlbum(), "")) {
                 try {
-                    List<RecordEntity> l = recordRep.findAllByAlbumId(albumRep.findByName(currReq.getAlbum()).getId());
-
-                    // puppet logic
-                    records.add(l.get(0));
-                    time += l.get(0).getTime();
+                    RecordEntity r = getRecord(recordRep.findAllByAlbumId(albumRep.findByName(currReq.getAlbum()).getId()));
+                    records.add(r);
+                    time += r.getTime();
                 } catch (Exception ignored) {
                 }
             } else if (!Objects.equals(currReq.getSinger(), "")) {
                 try {
-                    List<RecordEntity> l = recordRep.findAllBySingerId(singerRep.findByName(currReq.getSinger()).getId());
-
-                    // puppet logic
-                    records.add(l.get(0));
-                    time += l.get(0).getTime();
+                    RecordEntity r = getRecord(recordRep.findAllBySingerId(singerRep.findByName(currReq.getSinger()).getId()));
+                    records.add(r);
+                    time += r.getTime();
                 } catch (Exception ignored) {
                 }
             } else if (!Objects.equals(currReq.getAuthor(), "")) {
                 try {
-                    List<RecordEntity> l = recordRep.findAllByAuthorId(authorRep.findByName(currReq.getAuthor()).getId());
-
-                    // puppet logic
-                    records.add(l.get(0));
-                    time += l.get(0).getTime();
+                    RecordEntity r = getRecord(recordRep.findAllByAuthorId(authorRep.findByName(currReq.getAuthor()).getId()));
+                    records.add(r);
+                    time += r.getTime();
                 } catch (Exception ignored) {
                 }
             } else {
-                List<RecordEntity> l = recordRep.findAllByGenreId(genreRep.findByName(currReq.getGenre()).getId());
-
-                // puppet logic
-                records.add(l.get(0));
-                time += l.get(0).getTime();
+                RecordEntity r = getRecord(recordRep.findAllByGenreId(genreRep.findByName(currReq.getGenre()).getId()));
+                records.add(r);
+                time += r.getTime();
             }
 
             currReq.setCompleted(true);
-            if (time < e.getLength() * 60 && index+1 >= requests.size()) {
+            if (time < e.getLength() * 60 && index + 1 >= requests.size()) {
                 index = 0;
             } else {
                 ++index;
@@ -120,5 +112,9 @@ public class ProgramService implements IProgramService {
     @Override
     public List<OutputProgramDto> findAllByLengthBetween(Integer l1, Integer l2) {
         return programMap.fromEntities(programRep.findAllByLengthBetween(l1, l2));
+    }
+    private RecordEntity getRecord(List<RecordEntity> l){
+        int ind = (int) (Math.random() * (l.size() - 1));
+        return l.get(ind);
     }
 }
