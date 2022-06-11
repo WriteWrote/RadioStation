@@ -9,6 +9,7 @@ import vsu.radstat.model.entity.GenreEntity;
 import vsu.radstat.model.entity.ProgramEntity;
 import vsu.radstat.model.entity.RecordEntity;
 import vsu.radstat.model.entity.RequestEntity;
+import vsu.radstat.model.input.addon.RecordDto;
 import vsu.radstat.model.input.request.RequestProgramDto;
 import vsu.radstat.model.responce.OutputProgramDto;
 import vsu.radstat.repository.*;
@@ -96,7 +97,23 @@ public class ProgramService implements IProgramService {
         e.setRecords(records);
         programRep.save(e);
 
-        return programMap.fromEntity(e);
+        OutputProgramDto result = programMap.fromEntity(e);
+        for (int i = 0; i < e.getRecords().size(); i++) {
+            RecordDto buffRecDto = ReplaceIdByName(e.getRecords().get(i));
+
+            result.getRecords().get(i).setAlbumName(buffRecDto.getAlbumName());
+            result.getRecords().get(i).setGenreName(buffRecDto.getGenreName());
+            result.getRecords().get(i).setSingerName(buffRecDto.getSingerName());
+            result.getRecords().get(i).setAuthorName(buffRecDto.getAuthorName());
+
+//            result.getRecords().add(
+//                    ReplaceIdByName(
+//                            e.getRecords().get(i), result.getRecords().get(i))
+//            );
+        }
+
+//        return programMap.fromEntity(e);
+        return result;
     }
 
     @Override
@@ -113,8 +130,53 @@ public class ProgramService implements IProgramService {
     public List<OutputProgramDto> findAllByLengthBetween(Integer l1, Integer l2) {
         return programMap.fromEntities(programRep.findAllByLengthBetween(l1, l2));
     }
-    private RecordEntity getRecord(List<RecordEntity> l){
+
+    private RecordEntity getRecord(List<RecordEntity> l) {
         int ind = (int) (Math.random() * (l.size() - 1));
         return l.get(ind);
+    }
+
+    private RecordDto ReplaceIdByName(RecordEntity e) {
+        RecordDto dto = new RecordDto();
+        String n = "";
+
+        try {
+            n = Optional.of(albumRep.findById(e.getAlbumId()))
+                    .orElseThrow()
+                    .get()
+                    .getName();
+            dto.setAlbumName(n);
+        } catch (Exception ex) {
+            dto.setAlbumName("");
+        }
+        try {
+            n = Optional.of(authorRep.findById(e.getAuthorId()))
+                    .orElseThrow()
+                    .get()
+                    .getName();
+            dto.setAuthorName(n);
+        } catch (Exception ex) {
+            dto.setAuthorName("");
+        }
+        try {
+            n = Optional.of(genreRep.findById(e.getGenreId()))
+                    .orElseThrow()
+                    .get()
+                    .getName();
+            dto.setGenreName(n);
+        } catch (Exception ex) {
+            dto.setGenreName("");
+        }
+        try {
+            n = Optional.of(singerRep.findById(e.getSingerId()))
+                    .orElseThrow()
+                    .get()
+                    .getName();
+            dto.setSingerName(n);
+        } catch (Exception ex) {
+            dto.setSingerName("");
+        }
+
+        return dto;
     }
 }

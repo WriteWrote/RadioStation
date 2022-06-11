@@ -10,7 +10,7 @@ import vsu.radstat.model.responce.OutputProgramDto;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = RecordMapper.class)
 public interface ProgramMapper {
     //@Mapping(target = "genre_name", source = "genre")
     //@Mapping(target = "genre", ignore = true)
